@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Apex Elite Football Club Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--red:#e2321f;--red2:#8f1408;--gold:#f5dfb4;--ink:#0d0b0b;--panel:#1a1515;--fg:#f6ebe6;--mut:#c4b1ab;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{font-size:clamp(16px,.55vw + 12px,30px);scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);height:auto;background:var(--ink)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:radial-gradient(90% 50% at 50% 0,#3a0e0a 0,var(--ink) 70%);color:var(--fg);font:400 1rem/1.6 Barlow,system-ui,sans-serif;min-height:100vh}
+h1,h2,h3{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:800;text-transform:uppercase;line-height:.95;margin:0}
+.metal{background:linear-gradient(100deg,#b98c4e 0,#fff3d6 22%,#e7c68b 40%,#fff8e8 55%,#c99a5b 75%,#f5dfb4 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;justify-content:space-between;align-items:center;padding:.7rem 1.2rem;background:rgba(13,11,11,.8);backdrop-filter:blur(12px);border-bottom:1px solid rgba(245,223,180,.25)}
+nav b{font:800 1.4rem "Barlow Condensed",sans-serif;letter-spacing:.08em}
+nav div{display:flex;gap:1.2rem;align-items:center}
+nav a{color:var(--fg);text-decoration:none;font-weight:500}
+#mb{display:none;background:none;border:1px solid var(--gold);color:var(--gold);border-radius:.5rem;font-size:1.3rem;padding:.2rem .7rem;cursor:pointer}
+@media(max-width:860px){#mb{display:block}#mn{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(13,11,11,.97);padding:.6rem 1.2rem 1rem}#mn a{padding:.7rem 0;border-bottom:1px solid rgba(245,223,180,.15)}#mn.open{display:flex}#mn .gl{text-align:center;margin-top:.8rem;border:0}}
+.news{display:grid;gap:1rem;margin-top:1.8rem}.nc{padding:1.3rem 1.5rem;border-radius:1rem;background:linear-gradient(160deg,#2b1f1e,var(--panel));border:1px solid rgba(245,223,180,.3);border-left:6px solid var(--red)}.nc h3{font-size:1.8rem;margin:.2rem 0 .4rem}.nc p{margin:0;color:var(--mut)}.nc small{color:var(--gold)}
+.gl{display:inline-block;position:relative;overflow:hidden;color:#fff;text-decoration:none;font-weight:500;border:0;cursor:pointer;font-size:1rem;padding:.8rem 1.8rem;border-radius:99px;background:linear-gradient(180deg,#ff5a45 0,var(--red) 45%,var(--red2) 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 6px 20px rgba(226,50,31,.45)}
+.gl::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .6s}
+.gl:hover::after{left:130%}
+.gl.sm{padding:.4rem 1rem}
+.gl.ghost{background:transparent;box-shadow:inset 0 0 0 2px var(--gold);margin-left:.6rem;color:var(--gold)}
+.hero{text-align:center;padding:3.5rem 1.2rem 5rem;overflow:hidden}
+.sweep{animation:sw 3.2s .6s ease-out 1 both}
+@keyframes sw{from{transform:translateX(-140px)}to{transform:translateX(260px)}}
+.hero h1{font-size:clamp(3.4rem,13vw,9rem);letter-spacing:.02em;background-size:250% 100%;animation:sh 3.2s .6s ease-out 1 both}
+@keyframes sh{from{background-position:100% 0}to{background-position:0 0}}
+.hero p{max-width:32ch;margin:1.2rem auto 2rem;font-size:1.25rem;color:var(--mut)}
+@media(prefers-reduced-motion:reduce){.sweep,.hero h1{animation:none}}
+section{padding:4.5rem 1.2rem;max-width:68rem;margin:0 auto}
+h2{font-size:clamp(2.4rem,7vw,4.2rem);margin-bottom:.8rem}
+.lead{max-width:52ch;color:var(--mut)}
+.days .card h3{font-size:2.6rem}
+.grid{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));margin-top:2.2rem}
+.card{position:relative;padding:1.6rem;border-radius:1.1rem;background:linear-gradient(160deg,#2b1f1e 0,var(--panel) 60%);border:1px solid rgba(245,223,180,.3);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 18px 40px rgba(0,0,0,.5);overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--red2),#ff5a45,var(--red2))}
+.card h3{font-size:2rem;margin-bottom:.4rem}
+.card p{margin:0;color:var(--mut)}
+.band{max-width:none;background:linear-gradient(180deg,var(--red) 0,var(--red2) 100%);box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -2px 0 rgba(0,0,0,.35)}
+.band .in{max-width:68rem;margin:0 auto}
+.stats{display:flex;flex-wrap:wrap;gap:2.5rem;margin-top:1.5rem}
+.stats b{display:block;font:800 clamp(2.4rem,7vw,4rem) "Barlow Condensed",sans-serif}
+.scroll{overflow-x:auto;margin-top:1.5rem}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:.9rem .6rem;border-bottom:1px solid rgba(245,223,180,.2)}
+th{font:800 1.2rem "Barlow Condensed",sans-serif;text-transform:uppercase;color:var(--gold)}
+form{display:grid;gap:.8rem;max-width:30rem;margin-top:1.5rem}
+input,select{font:inherit;padding:.85rem 1rem;border-radius:.6rem;border:1px solid rgba(245,223,180,.4);background:#241b1a;color:var(--fg);width:100%}
+#msg{color:var(--gold);min-height:1.6em}
+footer{text-align:center;padding:2rem 1rem;color:var(--mut);border-top:1px solid rgba(245,223,180,.2)}
+
+.badge{position:relative;width:min(24rem,74vw,720px);aspect-ratio:1;margin:0 auto 1.8rem;border-radius:50%;overflow:hidden;box-shadow:0 0 0 3px rgba(245,223,180,.55),0 0 70px rgba(226,50,31,.55),0 30px 50px rgba(0,0,0,.6);filter:none}
+.badge img{width:100%;height:100%;display:block;clip-path:circle(50%)}
+.badge i{position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.6) 50%,transparent 65%);transform:translateX(-120%);animation:gl 3.2s .6s ease-out 1 forwards}
+@keyframes gl{to{transform:translateX(120%)}}
+.mini{width:2.2rem;height:2.2rem;border-radius:50%;clip-path:circle(50%);margin-right:.6rem;vertical-align:middle;box-shadow:0 0 0 2px rgba(245,223,180,.6)}
+nav b{display:flex;align-items:center}
+footer .mini{display:block;margin:0 auto 1rem;width:4rem;height:4rem}
+@media(prefers-reduced-motion:reduce){.badge i{animation:none;opacity:0}}
+.vh{position:absolute;left:-9999px}
+.gal{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fill,minmax(12rem,1fr));margin-top:1.8rem}
+.tile{aspect-ratio:1;border-radius:1rem;overflow:hidden;border:1px solid rgba(245,223,180,.3);background:linear-gradient(150deg,#3a1511,#1a1515);display:grid;place-items:center;color:var(--mut);text-align:center;padding:.5rem;box-shadow:0 12px 28px rgba(0,0,0,.5)}
+.tile img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in}
+.msg{min-height:1.6em;color:var(--gold)}.note{color:var(--mut);font-size:.9rem}
+.tabs{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.2rem 0}
+.stats div{min-width:8rem}.stats b{font-size:2.4rem!important;color:var(--gold)}
+#panel table{font-size:.9rem;min-width:36rem}#panel select,#panel .sb{width:auto;padding:.3rem .5rem;font-size:.85rem}
+.sb{border-radius:.4rem;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer}
+dialog{border:0;border-radius:1rem;padding:1.6rem;max-width:26rem;width:92vw;background:#fffaf3;color:#1c1a1a}
+dialog::backdrop{background:rgba(0,0,0,.75)}
+dialog h3{font-size:2rem;color:#b8281a}dialog table{font-size:.95rem}dialog td,dialog th{color:#1c1a1a;border-color:#ddd;padding:.4rem 0}
+.tag{display:inline-block;padding:.15rem .6rem;border-radius:99px;font-weight:500;background:#e9cfcb}.tag.ok{background:#c9efc9}
+@media print{body>*:not(dialog){display:none!important}dialog{box-shadow:none;position:static}.np{display:none}}
+.tile.add{cursor:pointer;font:inherit;color:var(--gold);border:2px dashed var(--gold);background:transparent}
+.team{position:relative;max-width:56rem;margin:0 auto 4rem}.team>img:first-child{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;border-radius:1.2rem;border:2px solid rgba(245,223,180,.5);box-shadow:0 0 70px rgba(226,50,31,.45),0 25px 50px rgba(0,0,0,.6)}
+.team .lg{position:absolute;left:50%;bottom:-3.2rem;width:7.5rem;height:7.5rem;transform:translateX(-50%);border-radius:50%;box-shadow:0 0 0 3px rgba(245,223,180,.7),0 12px 30px rgba(0,0,0,.7)}
+.hero .team+p{margin-top:0}
+.pi{aspect-ratio:1;border-radius:.6rem;overflow:hidden;background:linear-gradient(150deg,#3a1511,#1a1515);margin-bottom:.6rem}.pi img{width:100%;height:100%;object-fit:cover;display:block}.pc select{width:100%;margin:.2rem 0 .5rem}.cr{display:flex;justify-content:space-between;gap:.6rem;padding:.5rem 0;border-bottom:1px solid rgba(245,223,180,.2)}.sb{border-radius:.4rem;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;padding:.1rem .6rem}
+.pi{display:grid;place-items:center}
+.pi{position:relative}.sale{position:absolute;top:.5rem;left:.5rem;background:#e2321f;color:#fff;font:800 1.1rem "Barlow Condensed",sans-serif;padding:.15rem .6rem;border-radius:.4rem;box-shadow:0 4px 12px rgba(0,0,0,.5)}.was{color:var(--mut);text-decoration:line-through;margin-right:.6rem}.now{color:var(--gold);font-weight:800;font-size:1.3rem}
+</style>
+</head>
+<body>
+<nav><b><img class="mini" alt="" src="/logo.jpg"><span class="metal">APEX ELITE FC</span></b><button id="mb" aria-label="Menu" aria-expanded="false">☰</button><div id="mn"><a href="#programs">Programs</a><a href="#shop">Shop</a><a href="#schedule">Training</a><a href="#news">News</a><a href="#gallery">Gallery</a><a href="#pay">Pay</a><a href="#contact">Contact</a><a class="gl sm" href="#join">Register</a></div></nav>
+
+<header class="hero">
+<div class="team"><img id="hero" src="/hero.jpg" alt="Apex Elite FC team photo"><img class="lg" src="/logo.jpg" alt="Apex Elite Football Club badge"></div>
+<h1 class="vh">Apex Elite Football Club</h1>
+<p id="tg">A youth football academy building disciplined, confident players. Est. 2026.</p>
+<a class="gl" href="#join">Register a player</a><a class="gl ghost" href="#pay">Pay fees</a>
+</header>
+
+<section id="programs">
+<h2 class="metal">Programs</h2>
+<p class="lead">Training for every age, run by licensed coaches on a match-day structure.</p>
+<div class="grid">
+<div class="card"><h3>Cubs</h3><p>Ages 6–9. Ball mastery, coordination and fun small-sided games.</p></div>
+<div class="card"><h3>Juniors</h3><p>Ages 10–13. Passing patterns, positioning and team shape.</p></div>
+<div class="card"><h3>Elite</h3><p>Ages 14–18. Fitness, tactics and match analysis, with trial opportunities.</p></div>
+</div>
+</section>
+
+<section class="band"><div class="in">
+<h2>Three stars, one badge</h2>
+<div class="stats"><div><b class="metal">Skill</b>Technique first</div><div><b class="metal">Discipline</b>Show up, work hard</div><div><b class="metal">Pride</b>Play for the badge</div></div>
+</div></section>
+
+<section id="schedule">
+<h2 class="metal">Training days</h2>
+<p class="lead">Three sessions every week.</p>
+<div class="grid days" id="sc"></div>
+</section>
+
+<section id="shop"><h2 class="metal">Academy shop</h2><p class="lead">Jerseys, boots and all player equipment. <b>Free delivery</b> on every order. Pay by bank transfer or cash.</p><div class="grid" id="pr"></div>
+<form id="ck" hidden onsubmit="return false"><h3 class="metal" style="font-size:2rem;margin-top:1.5rem">Your cart</h3><div id="ci2"></div><input id="on" placeholder="Your name" aria-label="Your name"><input id="op" type="tel" placeholder="Phone number" aria-label="Phone number"><input id="oa" placeholder="Delivery address, or pick up at training" aria-label="Delivery address"><select id="om" aria-label="Payment method"><option>Bank transfer</option><option>Cash at training</option></select><button class="gl" type="button" onclick="ord()">Place order</button><div class="msg" id="omsg" aria-live="polite"></div></form></section>
+
+<section id="news"><h2 class="metal">Latest news</h2><p class="lead">Updates from the academy.</p><div class="news" id="nw"></div></section>
+
+<section id="gallery"><h2 class="metal">Gallery</h2><p class="lead">Photos from training and match days.</p><div class="gal" id="gal"></div></section>
+
+<section id="join"><h2 class="metal">Register a player</h2><p class="lead">New players join on trial. The coach confirms recruitment after assessment.</p>
+<form onsubmit="return false"><input id="n" placeholder="Player's full name" aria-label="Player's full name"><input id="a" type="number" min="5" max="19" placeholder="Age" aria-label="Age"><select id="g" aria-label="Group"><option>Cubs (6–9)</option><option>Juniors (10–13)</option><option>Elite (14–18)</option></select><input id="pos" placeholder="Position (optional)" aria-label="Position"><input id="par" placeholder="Parent or guardian name" aria-label="Parent name"><input id="p" type="tel" placeholder="Parent's phone number" aria-label="Phone"><button class="gl" type="button" onclick="reg()">Register player</button><div class="msg" id="msg" aria-live="polite"></div></form></section>
+
+<section id="pay"><h2 class="metal">Pay and get a receipt</h2><p class="lead">Choose the player and what you are paying for. You get a receipt straight away.</p>
+<form onsubmit="return false"><input id="pid" placeholder="Player ID (for example AE-0001)" aria-label="Player ID"><select id="ft" aria-label="Payment for"></select><select id="pm" aria-label="Method"><option>Bank transfer</option><option>Cash at training</option></select><div class="note" id="bank">Transfer to: Bank name, Account number, Account name (owner to add). Use the player ID as the reference.</div><button class="gl" type="button" onclick="pay()">Pay and get receipt</button><div class="msg" id="pmsg" aria-live="polite"></div></form></section>
+
+<section id="contact"><h2 class="metal">Contact us</h2><p class="lead">Questions about trials, fees or schedules? Message us on WhatsApp.</p>
+<form onsubmit="return false"><input id="cn" placeholder="Your name" aria-label="Your name"><input id="cm" placeholder="Your message" aria-label="Message"><button class="gl" type="button" onclick="wa()">Send on WhatsApp</button></form><p class="note" id="ci"></p></section>
+
+
+
+<dialog id="rc"></dialog>
+
+<footer><img class="mini" alt="" src="/logo.jpg">Apex Elite Football Club &middot; Est. 2026</footer>
+<script>var D={settings:{},fees:[{n:"Registration fee",a:5000},{n:"Monthly training fee",a:10000},{n:"Kit",a:15000}],schedule:[{d:"Tuesday",t:"4:00 pm"},{d:"Thursday",t:"4:00 pm"},{d:"Saturday",t:"8:30 am"}],news:[],photos:[],products:[{"id":"d1","name":"Academy jersey","price":15000,"oldPrice":25000,"sizes":"S,M,L,XL","img":false},{"id":"d2","name":"Match shorts","price":6000,"sizes":"S,M,L,XL","img":false},{"id":"d3","name":"Training tracksuit","price":22000,"sizes":"S,M,L,XL","img":false},{"id":"d4","name":"Football boots","price":25000,"sizes":"38,39,40,41,42,43,44,45","img":false},{"id":"d5","name":"Shin guards","price":4000,"sizes":"S,M,L","img":false},{"id":"d6","name":"Football socks","price":2500,"sizes":"","img":false},{"id":"d7","name":"Goalkeeper gloves","price":9000,"sizes":"6,7,8,9,10","img":false},{"id":"d8","name":"Training ball","price":10000,"sizes":"","img":false},{"id":"d9","name":"Kit bag","price":8000,"sizes":"","img":false},{"id":"d10","name":"Water bottle","price":2500,"sizes":"","img":false},{"id":"d11","name":"Training bib","price":2000,"sizes":"","img":false}]};
+var CART=[];
+function $(i){return document.getElementById(i)}
+function esc(t){return String(t==null?"":t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function N(n){return"\u20a6"+Number(n).toLocaleString("en-NG")}
+async function api(p,b){var r=await fetch("/api/"+p,b?{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(b)}:undefined),j=await r.json().catch(function(){return{}});if(!r.ok)throw new Error(j.error||"Online service is not connected yet.");return j}
+function draw(){var s=D.settings;if(s.tagline)$("tg").textContent=s.tagline;if(s.heroV)$("hero").src="/api/photo?id=hero&v="+s.heroV;
+$("sc").innerHTML=D.schedule.map(function(x){return'<div class="card"><h3>'+esc(x.d)+'</h3><p>'+esc(x.t)+'</p></div>'}).join("");
+var cf=$("ft").value;$("ft").innerHTML=D.fees.map(function(f){return'<option value="'+esc(f.n)+'">'+esc(f.n)+' - '+N(f.a)+'</option>'}).join("");if(cf)$("ft").value=cf;
+$("bank").textContent=s.acctNo?"Transfer to "+s.bankName+", account number "+s.acctNo+", account name "+s.acctName+". Use the player ID as the reference.":"Bank details will appear here soon.";
+$("ci").innerHTML=[s.phone&&'Call: <a href="tel:'+esc(s.phone)+'">'+esc(s.phone)+'</a>',s.address&&'Location: '+esc(s.address)].filter(Boolean).join("<br>");
+$("nw").innerHTML=D.news.length?D.news.map(function(n){return'<article class="nc"><small>'+esc(n.date)+'</small><h3>'+esc(n.title)+'</h3><p>'+esc(n.text)+'</p></article>'}).join(""):'<p class="lead">No news yet. Check back soon.</p>';
+var g=D.photos.map(function(p){return'<div class="tile"><img loading="lazy" src="/api/photo?id='+esc(p.id)+'" alt="Academy photo"></div>'});while(g.length<6)g.push('<div class="tile">Photos coming soon</div>');$("gal").innerHTML=g.join("");shop()}
+var IC={j:[["M30 18L42 12Q50 24 58 12L70 18 88 34 78 46 70 40V88H30V40L22 46 12 34Z","#e2321f"],["M44 12Q50 22 56 12","#f5dfb4"]],s:[["M24 20H76L84 82H54L50 52 46 82H16Z","#e2321f"],["M24 20H76V28H24Z","#1c1a1a"]],t:[["M30 16L42 12Q50 22 58 12L70 16 92 62 82 66 70 44V88H30V44L18 66 8 62Z","#1c1a1a"],["M50 22V88","#e2321f"],["M34 50H30V88H34Z","#e2321f"]],b:[["M12 64V42Q30 46 40 32L52 40Q62 54 84 56Q94 58 92 68V74H12Z","#1c1a1a"],["M12 64H92V74H12Z","#e2321f"],["M20 74V82H28V74ZM44 74V82H52V74ZM68 74V82H76V74Z","#f5dfb4"]],g:[["M36 14Q52 8 64 16L68 50Q66 78 52 90Q36 80 34 50Z","#e2321f"],["M44 30H58V40H44Z","#1c1a1a"]],k:[["M36 10H64V52L80 70Q84 86 66 88Q52 88 44 74L36 60Z","#e2321f"],["M36 10H64V22H36Z","#f5dfb4"]],v:[["M30 90V54L22 40Q20 32 28 34L34 44V24Q34 16 41 18 46 18 46 24V16Q46 10 53 12 58 14 58 20V18Q58 12 65 14 70 16 70 24V38L78 34Q84 34 80 44L72 72V90Z","#1c1a1a"],["M30 76H72V90H30Z","#e2321f"]],o:[["M50 14A36 36 0 1 0 50.1 14Z","#f6ebe6"],["M50 34L64 44 59 60H41L36 44Z","#1c1a1a"],["M50 34V18M64 44L80 38M59 60L68 76M41 60L32 76M36 44L20 38","#1c1a1a"]],a:[["M20 40Q20 32 28 32H72Q80 32 80 40V80Q80 88 72 88H28Q20 88 20 80Z","#e2321f"],["M36 32V24Q36 16 44 16H56Q64 16 64 24V32","#1c1a1a"],["M20 58H80V66H20Z","#1c1a1a"]],w:[["M40 26H60V32L66 38V84Q66 90 60 90H40Q34 90 34 84V38L40 32Z","#e2321f"],["M42 14H58V26H42Z","#1c1a1a"]],i:[["M28 12H42L50 36 58 12H72L78 88H22Z","#e2321f"],["M22 70H78V80H22Z","#1c1a1a"]],d:[["M50 12A38 38 0 1 0 50.1 12Z","#e2321f"]]};
+function ico(n){n=n.toLowerCase();var k=/jersey|shirt/.test(n)?"j":/short/.test(n)?"s":/track|jacket/.test(n)?"t":/boot|shoe|cleat/.test(n)?"b":/shin/.test(n)?"g":/sock/.test(n)?"k":/glove/.test(n)?"v":/ball/.test(n)?"o":/bag/.test(n)?"a":/bottle/.test(n)?"w":/bib|vest/.test(n)?"i":"d";return'<svg viewBox="0 0 100 100" style="width:62%;height:62%" aria-hidden="true">'+IC[k].map(function(l){return'<path d="'+l[0]+'" fill="'+(/^M[\d.]+ [\d.]+V\d+$/.test(l[0])||/^M\d+ \d+Q/.test(l[0])&&l[1]==="#f5dfb4"?"none":l[1])+'" stroke="#f5dfb4" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>'}).join("")+'</svg>'}
+function shop(){$("pr").innerHTML=D.products.map(function(p,i){var z=(p.sizes||"").split(",").map(function(x){return x.trim()}).filter(Boolean);return'<div class="card pc"><div class="pi">'+(p.img?'<img loading="lazy" src="/api/photo?id='+esc(p.id)+'" alt="'+esc(p.name)+'">':ico(p.name))+(p.oldPrice>p.price?'<span class="sale">-'+Math.round((1-p.price/p.oldPrice)*100)+'%</span>':'')+'</div><h3>'+esc(p.name)+'</h3><p>'+(p.oldPrice>p.price?'<span class="was">'+N(p.oldPrice)+'</span><span class="now">'+N(p.price)+'</span>':N(p.price))+'</p>'+(z.length?'<select id="sz'+i+'" aria-label="Size">'+z.map(function(x){return'<option>'+esc(x)+'</option>'}).join("")+'</select>':'')+'<button class="gl sm" onclick="addC('+i+')">Add to cart</button></div>'}).join("")||'<p class="lead">Shop items coming soon.</p>'}
+function addC(i){var p=D.products[i],s=$("sz"+i),z=s?s.value:"",f=CART.filter(function(c){return c.id===p.id&&c.size===z})[0];if(f)f.qty++;else CART.push({id:p.id,name:p.name,price:p.price,size:z,qty:1});cart();$("ck").scrollIntoView({behavior:"smooth",block:"nearest"})}
+function chg(i,d){CART[i].qty+=d;if(CART[i].qty<1)CART.splice(i,1);cart()}
+function cart(){$("ck").hidden=!CART.length;$("ci2").innerHTML=CART.map(function(c,i){return'<div class="cr"><span>'+esc(c.name)+(c.size?' ('+esc(c.size)+')':'')+' x'+c.qty+'</span><span>'+N(c.price*c.qty)+' <button class="sb" onclick="chg('+i+',-1)" aria-label="Less">-</button> <button class="sb" onclick="chg('+i+',1)" aria-label="More">+</button></span></div>'}).join("")+'<div class="cr"><span>Delivery</span><b>Free</b></div><div class="cr"><b>Total</b><b>'+N(CART.reduce(function(t,c){return t+c.price*c.qty},0))+'</b></div>'}
+async function ord(){var m=$("omsg");m.textContent="";try{var o=await api("order",{name:$("on").value,phone:$("op").value,addr:$("oa").value,method:$("om").value,items:CART.map(function(c){return{id:c.id,size:c.size,qty:c.qty}})}),s=D.settings;
+$("rc").innerHTML='<h3>Order receipt</h3><p>Apex Elite Football Club</p><table><tr><td>Order no.</td><td>'+esc(o.ref)+'</td></tr><tr><td>Date</td><td>'+esc(o.date)+'</td></tr><tr><td>Name</td><td>'+esc(o.name)+'</td></tr>'+o.items.map(function(i){return'<tr><td>'+esc(i.name)+(i.size?' ('+esc(i.size)+')':'')+' x'+i.qty+'</td><td>'+N(i.price*i.qty)+'</td></tr>'}).join("")+'<tr><td>Delivery</td><td>Free</td></tr><tr><td><b>Total</b></td><td><b>'+N(o.total)+'</b></td></tr><tr><td>Method</td><td>'+esc(o.method)+'</td></tr><tr><td>Status</td><td><span class="tag">'+esc(o.st)+'</span></td></tr></table><p class="note">'+(o.method==="Bank transfer"&&s.acctNo?'Transfer '+N(o.total)+' to '+esc(s.bankName)+', account '+esc(s.acctNo)+', '+esc(s.acctName)+'. Use order number '+esc(o.ref)+' as the reference.':'Pay at training and show this receipt.')+'</p><p class="np"><button class="gl sm" onclick="window.print()">Print receipt</button> <button class="gl sm ghost" onclick="$(\'rc\').close()">Close</button></p>';$("rc").showModal();CART=[];cart();["on","op","oa"].forEach(function(i){$(i).value=""})}catch(e){m.textContent=e.message}}
+async function reg(){var m=$("msg"),n=$("n").value.trim(),p=$("p").value.trim();if(!n||!p){m.textContent="Enter the player name and a phone number.";return}
+try{var r=await api("register",{name:n,age:$("a").value,grp:$("g").value,pos:$("pos").value.trim(),par:$("par").value.trim(),phone:p});try{localStorage.aeid=r.id}catch(e){}$("pid").value=r.id;m.textContent=n+" is registered. Player ID: "+r.id+". Go to payment below.";["n","a","pos","par","p"].forEach(function(i){$(i).value=""})}catch(e){m.textContent=e.message}}
+async function pay(){var m=$("pmsg");m.textContent="";try{rec(await api("pay",{pid:$("pid").value.trim().toUpperCase(),type:$("ft").value,method:$("pm").value}))}catch(e){m.textContent=e.message}}
+function rec(y){$("rc").innerHTML='<h3>Payment receipt</h3><p>Apex Elite Football Club</p><table><tr><td>Receipt no.</td><td>'+esc(y.ref)+'</td></tr><tr><td>Date</td><td>'+esc(y.date)+'</td></tr><tr><td>Player</td><td>'+esc(y.pname)+' ('+esc(y.pid)+')</td></tr><tr><td>Payment for</td><td>'+esc(y.type)+'</td></tr><tr><td>Method</td><td>'+esc(y.method)+'</td></tr><tr><td><b>Amount</b></td><td><b>'+N(y.amt)+'</b></td></tr><tr><td>Status</td><td><span class="tag">'+esc(y.st)+'</span></td></tr></table><p class="note">Keep this receipt. Status changes to Confirmed when the academy receives your payment.</p><p class="np"><button class="gl sm" onclick="window.print()">Print receipt</button> <button class="gl sm ghost" onclick="$(\'rc\').close()">Close</button></p>';$("rc").showModal()}
+function wa(){var w=D.settings.wa;if(!w){alert("The WhatsApp number has not been set yet.");return}window.open("https://wa.me/"+w.replace(/\D/g,"")+"?text="+encodeURIComponent("Hello Apex Elite FC, I am "+($("cn").value||"a parent")+". "+$("cm").value),"_blank")}
+$("mb").onclick=function(){var o=$("mn").classList.toggle("open");this.setAttribute("aria-expanded",o)};$("mn").onclick=function(){this.classList.remove("open")};
+try{$("pid").value=localStorage.aeid||""}catch(e){}
+var tp=0,tt;document.querySelector("footer .mini").onclick=function(){tp++;clearTimeout(tt);tt=setTimeout(function(){tp=0},2500);if(tp>=5)location.href="/admin.html"};
+draw();api("site").then(function(d){D=d;draw()}).catch(function(){});</script>
+</body>
+</html>
