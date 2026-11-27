@@ -1,0 +1,48 @@
+APEX ELITE FC — COACH ADMIN PACKAGE
+====================================
+
+WHAT IS INCLUDED
+- public/coach-admin.html: a separate restricted Coach Admin login page.
+- public/admin-reset.html: temporary page for setting a new Main Admin code after the secure API recovery endpoint is installed.
+- patches/API-AND-ADMIN-PATCH.txt: exact server/admin code changes needed to enable recovery and the Coach Admin role.
+
+CURRENT WEBSITE STATUS
+Your current API supports one Main Admin code and one older Staff code. It does not yet
+support a separate Coach Admin role. The coach page therefore needs the API patch before
+it can log in. The API patch is written against the current GitHub version that was reviewed.
+
+COACH PERMISSIONS AFTER THE PATCH
+- Players: view player list and update player status; cannot delete players.
+- Player SEO: create and edit player profiles; cannot delete profiles.
+- Formations & Lineup: edit formation, coach name and lineup.
+- No access to payments, orders, shop, global SEO, website settings, staff controls or main admin security.
+
+ANDROID / GITHUB INSTALL
+1. Download and unzip this package on your phone.
+2. In GitHub, open your Apex-elite-fc repository.
+3. Open the public folder, choose Add file > Upload files.
+4. Upload coach-admin.html into public/ (not the repository root).
+5. Do NOT replace public/admin.html.
+6. Upload admin-reset.html into public/ too; it is temporary and must be deleted after the Main Admin reset succeeds.
+7. Open patches/API-AND-ADMIN-PATCH.txt and apply every numbered change carefully to the existing
+   netlify/functions/api.mjs and public/admin.html. Do not replace either file with a
+   shortened version.
+8. Set ADMIN_RECOVERY_CODE in Netlify Environment Variables, redeploy, then use /admin-reset.html
+   to choose your own new Main Admin code. Delete public/admin-reset.html immediately after success.
+9. Wait for Netlify to finish deploying and test both accounts.
+
+LOGIN URL
+https://YOUR-WEBSITE-DOMAIN/coach-admin.html
+
+MAIN ADMIN RESET
+The current API stores the Main Admin code in Netlify Blobs. The fallback text
+"APEX2026" is used only when no saved code exists. Do not assume the fallback is active.
+A secure recovery endpoint still needs to be added and protected with a private,
+random ADMIN_RECOVERY_CODE Netlify environment variable before a new Main Admin code
+can be set without the old code. Do not publish recovery secrets in GitHub or share
+them in chat.
+
+DO NOT DELETE THE OLD ADMIN
+Keep public/admin.html, netlify/functions/api.mjs, and the existing Netlify Blobs data.
+Only remove the old Staff code after the new Main Admin and Coach Admin logins have
+both been tested successfully.
