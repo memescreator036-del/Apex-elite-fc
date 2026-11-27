@@ -1,0 +1,46 @@
+APEX ELITE FC — ADMIN PASSWORD RECOVERY PATCH
+==============================================
+
+IMPORTANT: This patch is designed for your EXISTING netlify/functions/api.mjs.
+Do not create a second Netlify function on /api/* because your current api.mjs
+already owns that route.
+
+1) In Netlify → Site configuration → Environment variables, add:
+   ADMIN_RECOVERY_CODE = a long private random secret (at least 24 characters).
+   Do not put the secret in GitHub, website HTML, screenshots or messages.
+
+2) In netlify/functions/api.mjs, find this line:
+   const s=Object.assign(DEF(),await st().get("state",{type:"json"})||{});
+
+   Immediately AFTER it, insert this block:
+
+   if(req.method==="POST"&&p==="admin-recovery"){
+     const secret=process.env.ADMIN_RECOVERY_CODE||"";
+     if(secret.length<24)return J({error:"Admin recovery is not configured"},503);
+     const body=await req.json().catch(()=>({}));
+     if(String(body.recoveryCode||"")!==secret)return J({error:"Invalid recovery secret"},401);
+     const next=String(body.newCode||"");
+     if(next.length<10||next.length>200)return J({error:"New admin code must be 10 to 200 characters"},400);
+     s.code=next;
+     await st().setJSON("state",s);
+     return J({ok:true,message:"Admin code reset"});
+   }
+
+3) Deploy after saving api.mjs.
+
+4) To recover, send a POST request to /api/admin-recovery with JSON:
+   {"recoveryCode":"YOUR_PRIVATE_RECOVERY_SECRET","newCode":"YOUR_NEW_LONG_ADMIN_CODE"}
+
+   This changes the master admin code stored by your current API. It does not
+   change or remove staff access.
+
+5) Your current admin screen does not yet have a recovery form. Until you add
+   one, this endpoint can be called using a REST client or a small temporary
+   recovery page. Do not publish the recovery secret in that page. For the
+   safest simple workflow, I can add a recovery form into the existing admin
+   login page after you upload its exact current file.
+
+WHY WE ARE NOT REPLACING THE API:
+Your current API already contains the 15-section admin actions, the public
+/api/site data endpoint, SEO settings, published player profiles, sitemap
+and robots endpoints. Preserve those existing actions.
